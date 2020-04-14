@@ -1,0 +1,31 @@
+<mp-table
+  #clinicianTable
+  [mpData]="listOfData"
+  class="clincian-table"
+  [mpPageSize]="pageSize"
+>
+  <thead>
+    <tr class="table-header">
+      <th *ngFor="let col of gridOptions" width="{{ col.width }}">
+        {{ col.displayName }}
+      </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let row of clinicianTable.data">
+      <td
+        *ngFor="let col of gridOptions"
+        [ngSwitch]="col.name"
+        [ngStyle]="{ 'text-align': col.align }"
+      >
+        <ng-container *ngSwitchCase="'familyName'">
+          {{ row.familyName }} {{ row.givenName }}
+        </ng-container>
+        <ng-container *ngSwitchCase="'numOfPatients'">
+          {{ !row.numOfPatients ? '0' : row.numOfPatients }}
+        </ng-container>
+      </td>
+    </tr>
+  </tbody>
+</mp-table>

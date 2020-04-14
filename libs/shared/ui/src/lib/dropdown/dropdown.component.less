@@ -1,0 +1,36 @@
+@import 'variables.less';
+
+:host {
+  display: contents;
+}
+
+.cdk-overlay-pane {
+  top: 7px !important;
+  margin-left: 0px;
+
+  i {
+    svg {
+      color: @primary-color !important;
+    }
+  }
+
+  li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.ant-select-dropdown {
+  border-radius: 13px !important;
+}
+
+.ant-select-dropdown-menu-item:first-child {
+  color: @primary-color !important;
+  cursor: pointer !important;
+}
+
+.ant-select-open .ant-select-selection {
+  box-shadow: 0 0 0 0 rgba(117, 87, 243, 0.2) !important;
+  border: unset;
+}

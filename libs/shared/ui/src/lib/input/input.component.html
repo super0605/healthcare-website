@@ -1,0 +1,25 @@
+<div *ngIf="type === 'textarea'; then textarea; else input"></div>
+<ng-template #textarea>
+  <textarea
+    nz-input
+    [nzSize]="size"
+    [nzAutosize]="autoSize"
+    [disabled]="disabled"
+    [placeholder]="placeholder"
+    [(ngModel)]="value"
+    (change)="onChange(value)"
+  >
+    <ng-content></ng-content>
+  </textarea>
+</ng-template>
+<ng-template #input>
+  <input
+    nz-input
+    [type]="type"
+    [nzSize]="size"
+    [disabled]="disabled"
+    [placeholder]="placeholder"
+    [(ngModel)]="value"
+    (change)="onChange(value)"
+  />
+</ng-template>

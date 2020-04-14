@@ -1,0 +1,16 @@
+<button
+  nz-button
+  [class]="class"
+  (click)="onClick()"
+  [disabled]="disabled"
+  [nzGhost]="ghost"
+  [nzLoading]="loading"
+  [nzBlock]="block"
+  [nzType]="type"
+  [nzSize]="size"
+  [nzShape]="shape"
+>
+  <i mp-icon *ngIf="prefixIcon" [inlineSVG]="prefixIcon"></i>
+  <ng-content></ng-content>
+  <i mp-icon *ngIf="suffixIcon" [inlineSVG]="suffixIcon"></i>
+</button>

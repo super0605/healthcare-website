@@ -1,0 +1,26 @@
+<nz-table
+  #basicTable
+  [nzData]="listOfData"
+  class="clincian-table"
+  [nzPageSize]="pageSize"
+>
+  <thead>
+    <tr class="table-header">
+      <th *ngFor="let col of gridOptions.colDefs" width="{{ col.width }}">
+        {{ col.displayName }}
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of basicTable.data; let i = index">
+      <td class="row" *ngFor="let col of gridOptions.colDefs">
+        <ng-container
+          *ngTemplateOutlet="
+            itemTpl;
+            context: { $implicit: { data: row, col: col } }
+          "
+        ></ng-container>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>

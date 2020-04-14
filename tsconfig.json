@@ -1,0 +1,69 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2017", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@medopad/shared/ui": ["libs/shared/ui/src/index.ts"],
+      "@medopad/shared/theme": ["libs/shared/theme/src/index.ts"],
+      "@medopad/shared/theme/styles/*": ["libs/shared/theme/src/styles/*"],
+      "@medopad/shared/layouts": ["libs/shared/layouts/src/index.ts"],
+      "@medopad/shared/providers": ["libs/shared/providers/src/index.ts"],
+      "@medopad/shared/locales": ["libs/shared/locales/src/index.ts"],
+      "@medopad/shared/routes": ["libs/shared/routes/src/index.ts"],
+      "@medopad/shared/services": ["libs/shared/services/src/index.ts"],
+      "@medopad/shared/pages/login": ["libs/shared/pages/login/src/index.ts"],
+      "@medopad/shared/pages/dashboard": [
+        "libs/shared/pages/dashboard/src/index.ts"
+      ],
+      "@medopad/shared/pages/clinicians-list": [
+        "libs/shared/pages/clinicians-list/src/index.ts"
+      ],
+      "@medopad/shared/pages/patients-list": [
+        "libs/shared/pages/patients-list/src/index.ts"
+      ],
+      "@medopad/shared/pages/patients-profile": [
+        "libs/shared/pages/patients-profile/src/index.ts"
+      ],
+      "@medopad/clinician-app/providers": [
+        "libs/clinician-app/providers/src/index.ts"
+      ],
+      "@medopad/clinician-app/locales": [
+        "libs/clinician-app/locales/src/index.ts"
+      ],
+      "@medopad/clinician-app/services": [
+        "libs/clinician-app/services/src/index.ts"
+      ],
+      "@medopad/clinician-app/routes": [
+        "libs/clinician-app/routes/src/index.ts"
+      ],
+      "@medopad/shared/pages/signup": ["libs/shared/pages/signup/src/index.ts"],
+      "@medopad/shared/pages/reset-password": [
+        "libs/shared/pages/reset-password/src/index.ts"
+      ],
+      "@medopad/shared/pages/email-confirm": [
+        "libs/shared/pages/email-confirm/src/index.ts"
+      ],
+      "@medopad/shared/pages/patient-detail": [
+        "libs/shared/pages/patient-detail/src/index.ts"
+      ],
+      "@medopad/shared/pages/clinician-detail": [
+        "libs/shared/pages/clinician-detail/src/index.ts"
+      ],
+      "@medopad/shared/mpui": ["libs/shared/mpui/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

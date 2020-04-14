@@ -1,0 +1,819 @@
+{
+  "version": 1,
+  "projects": {
+    "clinician-app": {
+      "projectType": "application",
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "less"
+        }
+      },
+      "root": "apps/clinician-app",
+      "sourceRoot": "apps/clinician-app/src",
+      "prefix": "medopad",
+      "architect": {
+        "build": {
+          "builder": "@angular-builders/custom-webpack:browser",
+          "options": {
+            "customWebpackConfig": {
+              "path": "apps/clinician-app/extra-webpack.config.js",
+              "replaceDuplicatePlugins": true
+            },
+            "outputPath": "dist/apps/clinician-app",
+            "index": "apps/clinician-app/src/index.html",
+            "main": "apps/clinician-app/src/main.ts",
+            "polyfills": "apps/clinician-app/src/polyfills.ts",
+            "tsConfig": "apps/clinician-app/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/clinician-app/src/favicon.ico",
+              "apps/clinician-app/src/assets",
+              {
+                "glob": "**/*",
+                "input": "./node_modules/@ant-design/icons-angular/src/inline-svg/",
+                "output": "/assets/"
+              }
+            ],
+            "styles": [
+              "apps/clinician-app/src/assets/styles/theme.less"
+            ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "libs/shared/theme/src/styles/"
+              ]
+            },
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/clinician-app/src/environments/environment.ts",
+                  "with": "apps/clinician-app/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-builders/custom-webpack:dev-server",
+          "options": {
+            "browserTarget": "clinician-app:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "clinician-app:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "clinician-app:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/clinician-app/tsconfig.app.json",
+              "apps/clinician-app/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/clinician-app/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/clinician-app/jest.config.js",
+            "tsConfig": "apps/clinician-app/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "apps/clinician-app/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "clinician-app-e2e": {
+      "root": "apps/clinician-app-e2e",
+      "sourceRoot": "apps/clinician-app-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/clinician-app-e2e/cypress.json",
+            "tsConfig": "apps/clinician-app-e2e/tsconfig.e2e.json",
+            "devServerTarget": "clinician-app:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "clinician-app:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/clinician-app-e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/clinician-app-e2e/**"
+            ]
+          }
+        }
+      }
+    },
+    "shared-ui": {
+      "projectType": "library",
+      "root": "libs/shared/ui",
+      "sourceRoot": "libs/shared/ui/src",
+      "prefix": "medopad",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shared/ui/tsconfig.lib.json",
+              "libs/shared/ui/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/shared/ui/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/shared/ui/jest.config.js",
+            "tsConfig": "libs/shared/ui/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/shared/ui/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "less"
+        }
+      }
+    },
+    "shared-theme": {
+      "projectType": "library",
+      "root": "libs/shared/theme",
+      "sourceRoot": "libs/shared/theme/src",
+      "prefix": "medopad",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shared/theme/tsconfig.lib.json",
+              "libs/shared/theme/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/shared/theme/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/shared/theme/jest.config.js",
+            "tsConfig": "libs/shared/theme/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/shared/theme/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "less"
+        }
+      }
+    },
+    "shared-pages-dashboard": {
+      "projectType": "library",
+      "root": "libs/shared/pages/dashboard",
+      "sourceRoot": "libs/shared/pages/dashboard/src",
+      "prefix": "medopad",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shared/pages/dashboard/tsconfig.lib.json",
+              "libs/shared/pages/dashboard/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/dashboard/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/shared/pages/dashboard/jest.config.js",
+            "tsConfig": "libs/shared/pages/dashboard/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/shared/pages/dashboard/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "less"
+        }
+      }
+    },
+    "shared-layouts": {
+      "projectType": "library",
+      "root": "libs/shared/layouts",
+      "sourceRoot": "libs/shared/layouts/src",
+      "prefix": "medopad",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shared/layouts/tsconfig.lib.json",
+              "libs/shared/layouts/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/shared/layouts/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/shared/layouts/jest.config.js",
+            "tsConfig": "libs/shared/layouts/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/shared/layouts/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "less"
+        }
+      }
+    },
+    "shared-providers": {
+      "root": "libs/shared/providers",
+      "sourceRoot": "libs/shared/providers/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shared/providers/tsconfig.lib.json",
+              "libs/shared/providers/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/shared/providers/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/shared/providers/jest.config.js",
+            "tsConfig": "libs/shared/providers/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "shared-services": {
+      "root": "libs/shared/services",
+      "sourceRoot": "libs/shared/services/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shared/services/tsconfig.lib.json",
+              "libs/shared/services/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/shared/services/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/shared/services/jest.config.js",
+            "tsConfig": "libs/shared/services/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "shared-routes": {
+      "root": "libs/shared/routes",
+      "sourceRoot": "libs/shared/routes/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shared/routes/tsconfig.lib.json",
+              "libs/shared/routes/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/shared/routes/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/shared/routes/jest.config.js",
+            "tsConfig": "libs/shared/routes/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "shared-locales": {
+      "root": "libs/shared/locales",
+      "sourceRoot": "libs/shared/locales/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shared/locales/tsconfig.lib.json",
+              "libs/shared/locales/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/shared/locales/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/shared/locales/jest.config.js",
+            "tsConfig": "libs/shared/locales/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "shared-pages-login": {
+      "projectType": "library",
+      "root": "libs/shared/pages/login",
+      "sourceRoot": "libs/shared/pages/login/src",
+      "prefix": "medopad",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shared/pages/login/tsconfig.lib.json",
+              "libs/shared/pages/login/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/shared/pages/login/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/shared/pages/login/jest.config.js",
+            "tsConfig": "libs/shared/pages/login/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/shared/pages/login/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "less"
+        }
+      }
+    },
+    "shared-clinicians-list": {
+      "projectType": "library",
+      "root": "libs/shared/pages/clinicians-list",
+      "sourceRoot": "libs/shared/pages/clinicians-list/src",
+      "prefix": "medopad",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shared/pages/clinicians-list/tsconfig.lib.json",
+              "libs/shared/pages/clinicians-list/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/shared/pages/clinicians-list/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/shared/pages/clinicians-list/jest.config.js",
+            "tsConfig": "libs/shared/pages/clinicians-list/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/shared/pages/clinicians-list/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "less"
+        }
+      }
+    },
+    "shared-patients-list": {
+      "projectType": "library",
+      "root": "libs/shared/pages/patients-list",
+      "sourceRoot": "libs/shared/pages/patients-list/src",
+      "prefix": "medopad",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shared/pages/patients-list/tsconfig.lib.json",
+              "libs/shared/pages/patients-list/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/shared/pages/patients-list/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/shared/pages/patients-list/jest.config.js",
+            "tsConfig": "libs/shared/pages/patients-list/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/shared/pages/patients-list/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "less"
+        }
+      }
+    },
+    "clinician-app-providers": {
+      "root": "libs/clinician-app/providers",
+      "sourceRoot": "libs/clinician-app/providers/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/clinician-app/providers/tsconfig.lib.json",
+              "libs/clinician-app/providers/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/clinician-app/providers/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/clinician-app/providers/jest.config.js",
+            "tsConfig": "libs/clinician-app/providers/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "clinician-app-locales": {
+      "root": "libs/clinician-app/locales",
+      "sourceRoot": "libs/clinician-app/locales/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/clinician-app/locales/tsconfig.lib.json",
+              "libs/clinician-app/locales/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/clinician-app/locales/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/clinician-app/locales/jest.config.js",
+            "tsConfig": "libs/clinician-app/locales/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "clinician-app-services": {
+      "root": "libs/clinician-app/services",
+      "sourceRoot": "libs/clinician-app/services/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/clinician-app/services/tsconfig.lib.json",
+              "libs/clinician-app/services/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/clinician-app/services/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/clinician-app/services/jest.config.js",
+            "tsConfig": "libs/clinician-app/services/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "clinician-app-routes": {
+      "root": "libs/clinician-app/routes",
+      "sourceRoot": "libs/clinician-app/routes/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/clinician-app/routes/tsconfig.lib.json",
+              "libs/clinician-app/routes/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/clinician-app/routes/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/clinician-app/routes/jest.config.js",
+            "tsConfig": "libs/clinician-app/routes/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "shared-pages-signup": {
+      "projectType": "library",
+      "root": "libs/shared/pages/signup",
+      "sourceRoot": "libs/shared/pages/signup/src",
+      "prefix": "medopad",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shared/pages/signup/tsconfig.lib.json",
+              "libs/shared/pages/signup/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/shared/pages/signup/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/shared/pages/signup/jest.config.js",
+            "tsConfig": "libs/shared/pages/signup/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/shared/pages/signup/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "less"
+        }
+      }
+    },
+    "shared-pages-reset-password": {
+      "projectType": "library",
+      "root": "libs/shared/pages/reset-password",
+      "sourceRoot": "libs/shared/pages/reset-password/src",
+      "prefix": "medopad",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shared/pages/reset-password/tsconfig.lib.json",
+              "libs/shared/pages/reset-password/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/shared/pages/reset-password/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/shared/pages/reset-password/jest.config.js",
+            "tsConfig": "libs/shared/pages/reset-password/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/shared/pages/reset-password/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "less"
+        }
+      }
+    },
+    "shared-pages-email-confirm": {
+      "projectType": "library",
+      "root": "libs/shared/pages/email-confirm",
+      "sourceRoot": "libs/shared/pages/email-confirm/src",
+      "prefix": "medopad",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shared/pages/email-confirm/tsconfig.lib.json",
+              "libs/shared/pages/email-confirm/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/shared/pages/email-confirm/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/shared/pages/email-confirm/jest.config.js",
+            "tsConfig": "libs/shared/pages/email-confirm/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/shared/pages/email-confirm/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "less"
+        }
+      }
+    },
+    "shared-patient-detail": {
+      "projectType": "library",
+      "root": "libs/shared/pages/patient-detail",
+      "sourceRoot": "libs/shared/pages/patient-detail/src",
+      "prefix": "medopad",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shared/pages/patient-detail/tsconfig.lib.json",
+              "libs/shared/pages/patient-detail/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/shared/pages/patient-detail/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/shared/pages/patient-detail/jest.config.js",
+            "tsConfig": "libs/shared/pages/patient-detail/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/shared/pages/patient-detail/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "less"
+        }
+      }
+    },
+    "shared-mpui": {
+      "projectType": "library",
+      "root": "libs/shared/mpui",
+      "sourceRoot": "libs/shared/mpui/src",
+      "prefix": "medopad",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shared/mpui/tsconfig.lib.json",
+              "libs/shared/mpui/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/shared/mpui/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/shared/mpui/jest.config.js",
+            "tsConfig": "libs/shared/mpui/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/shared/mpui/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "less"
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular",
+    "analytics": "0e2be374-f6da-4ca5-bfe7-9a6b70ce5bb1"
+  },
+  "schematics": {
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    }
+  },
+  "defaultProject": "clinician-app"
+}
+

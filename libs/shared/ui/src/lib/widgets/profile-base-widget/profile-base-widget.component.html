@@ -1,0 +1,39 @@
+<div class="profile-tabs">
+  <div class="first-container-tabs">
+    <div class="first-tab tab">
+      <div class="tab-menu">
+        <div class="form-label">{{ title }}</div>
+
+        <mp-menu
+          title=". . ."
+          [items]="menuItems"
+          class="patient-menu"
+          (selected)="onEdit($event)"
+          *ngIf="!isEditState"
+        ></mp-menu>
+
+        <div class="icons-edit-mode" *ngIf="isEditState">
+          <i
+            nz-icon
+            nzType="close-circle"
+            nzTheme="outline"
+            class="icon-close"
+            (click)="switchState()"
+          ></i>
+          <button
+            nz-button
+            nzType="primary"
+            [nzSize]="size"
+            nzShape="circle"
+            (click)="submit()"
+          >
+            <i nz-icon nzType="check"></i>
+          </button>
+        </div>
+      </div>
+      <hr />
+
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>

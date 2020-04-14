@@ -1,0 +1,31 @@
+<div *ngIf="patient">
+  <mp-card class="shadow">
+    <div mp-row>
+      <div mp-col span="12">
+        <div mp-typography class="patient-name" tag="h4">
+          {{ patient.familyName }} {{ patient.givenName }}
+        </div>
+        <div mp-row>
+          <div mp-col span="12">
+            <div mp-row type="flex">
+              <div mp-typography tag="span">
+                NHS #:
+              </div>
+              <div mp-typography class="patient-num" tag="span">
+                123 456 789 10
+              </div>
+            </div>
+          </div>
+          <div mp-col span="12">
+            <div mp-typography tag="span">
+              DOB: {{ patient.createdDateTime | date: 'dd/MM/yyyy' }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div mp-col span="12">
+        <medopad-action-bar></medopad-action-bar>
+      </div>
+    </div>
+  </mp-card>
+</div>

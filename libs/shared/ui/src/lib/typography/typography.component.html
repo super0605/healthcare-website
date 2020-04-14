@@ -1,0 +1,112 @@
+<ng-template #contentTpl>
+  <ng-content></ng-content>
+</ng-template>
+
+<div [ngSwitch]="tag">
+  <p
+    *ngSwitchCase="'p'"
+    nz-paragraph
+    [nzContent]="content"
+    [nzCopyable]="copyable"
+    [nzEditable]="editable"
+    [nzEllipsis]="ellipsis"
+    [nzCopyText]="copyText"
+    [nzDisabled]="disabled"
+    [nzExpandable]="expandable"
+    [nzEllipsisRows]="ellipsisRows"
+    [nzType]="type"
+    (nzContentChange)="onContentChangeEvent($event)"
+    (nzExpandChange)="onExpandChangeEvent()"
+  >
+    <ng-container [ngTemplateOutlet]="contentTpl"></ng-container>
+  </p>
+  <span
+    *ngSwitchCase="'span'"
+    nz-text
+    [nzContent]="content"
+    [nzCopyable]="copyable"
+    [nzEditable]="editable"
+    [nzEllipsis]="ellipsis"
+    [nzCopyText]="copyText"
+    [nzDisabled]="disabled"
+    [nzExpandable]="expandable"
+    [nzEllipsisRows]="ellipsisRows"
+    [nzType]="type"
+    (nzContentChange)="onContentChangeEvent($event)"
+    (nzExpandChange)="onExpandChangeEvent()"
+  >
+    <ng-container [ngTemplateOutlet]="contentTpl"></ng-container>
+  </span>
+
+  <h1
+    *ngSwitchCase="'h1'"
+    nz-title
+    [nzContent]="content"
+    [nzCopyable]="copyable"
+    [nzEditable]="editable"
+    [nzEllipsis]="ellipsis"
+    [nzCopyText]="copyText"
+    [nzDisabled]="disabled"
+    [nzExpandable]="expandable"
+    [nzEllipsisRows]="ellipsisRows"
+    [nzType]="type"
+    (nzContentChange)="onContentChangeEvent($event)"
+    (nzExpandChange)="onExpandChangeEvent()"
+  >
+    <ng-container [ngTemplateOutlet]="contentTpl"></ng-container>
+  </h1>
+
+  <h2
+    *ngSwitchCase="'h2'"
+    nz-title
+    [nzContent]="content"
+    [nzCopyable]="copyable"
+    [nzEditable]="editable"
+    [nzEllipsis]="ellipsis"
+    [nzCopyText]="copyText"
+    [nzDisabled]="disabled"
+    [nzExpandable]="expandable"
+    [nzEllipsisRows]="ellipsisRows"
+    [nzType]="type"
+    (nzContentChange)="onContentChangeEvent($event)"
+    (nzExpandChange)="onExpandChangeEvent()"
+  >
+    <ng-container [ngTemplateOutlet]="contentTpl"></ng-container>
+  </h2>
+
+  <h3
+    *ngSwitchCase="'h3'"
+    nz-title
+    [nzContent]="content"
+    [nzCopyable]="copyable"
+    [nzEditable]="editable"
+    [nzEllipsis]="ellipsis"
+    [nzCopyText]="copyText"
+    [nzDisabled]="disabled"
+    [nzExpandable]="expandable"
+    [nzEllipsisRows]="ellipsisRows"
+    [nzType]="type"
+    (nzContentChange)="onContentChangeEvent($event)"
+    (nzExpandChange)="onExpandChangeEvent()"
+  >
+    <ng-container [ngTemplateOutlet]="contentTpl"></ng-container>
+  </h3>
+
+  <h4
+    *ngSwitchCase="'h4'"
+    nz-title
+    [nzContent]="content"
+    [nzCopyable]="copyable"
+    [nzEditable]="editable"
+    [nzEllipsis]="ellipsis"
+    [nzCopyText]="copyText"
+    [nzDisabled]="disabled"
+    [nzExpandable]="expandable"
+    [nzEllipsisRows]="ellipsisRows"
+    [nzType]="type"
+    (nzContentChange)="onContentChangeEvent($event)"
+    (nzExpandChange)="onExpandChangeEvent()"
+  >
+    <ng-container [ngTemplateOutlet]="contentTpl"></ng-container>
+  </h4>
+</div>

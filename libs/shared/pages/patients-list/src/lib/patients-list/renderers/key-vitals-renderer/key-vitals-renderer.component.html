@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="flex-container-render">
+    <div *ngFor="let item of displayKeys">
+      <div class=" icon-{{ item.type }}">
+        <button
+          mp-button
+          class="ant-btn ant-btn-primary ant-btn-circle"
+          ant-click-animating-without-extra-node="false"
+          size="large"
+        >
+          {{ constants.keyVitals[item.name] }}
+        </button>
+      </div>
+    </div>
+
+    <div class="count-container">
+      <div class="flex-position">
+        <span class="icon-red" *ngIf="hiddenKeys.red !== 0"
+          >+{{ hiddenKeys.red }}</span
+        >
+        <span class="icon-amber" *ngIf="hiddenKeys.amber !== 0"
+          >+{{ hiddenKeys.amber }}</span
+        >
+        <span class="icon-green" *ngIf="hiddenKeys.green !== 0"
+          >+{{ hiddenKeys.green }}</span
+        >
+      </div>
+    </div>
+  </div>
+</div>

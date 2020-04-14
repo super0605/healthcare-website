@@ -1,0 +1,16 @@
+<mp-profile-base-widget
+  title="Surgery"
+  (editStateChanged)="isEditState = $event"
+  (submitEditForm)="submit()"
+>
+  <div class="tab-form" *ngFor="let item of data | keyvalue">
+    <div class="form-label">{{ item.key | titlecase }}:</div>
+    <div
+      mp-input
+      type="text"
+      [value]="item.value"
+      (changed)="onChangeParams($event, item.key, data)"
+      [disabled]="!isEditState"
+    ></div>
+  </div>
+</mp-profile-base-widget>

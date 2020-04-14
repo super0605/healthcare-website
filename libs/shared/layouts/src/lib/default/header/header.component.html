@@ -1,0 +1,50 @@
+<div class="topbar">
+  <div class="flex-container">
+    <div class="logo">
+      <mp-logo class="logo-img-container"></mp-logo>
+    </div>
+    <button
+      mp-button
+      type="link"
+      prefixIcon="assets/images/icons/back.svg"
+      class="topbar-back"
+      (clicked)="goBackClick()"
+    ></button>
+
+    <!-- <div class="top-actions">
+      <span class="top-actions-label">
+        Overview of
+      </span>
+      <mp-dropdown
+        class="select-clinician"
+        [selectedValue]="selectedListItem"
+        [options]="listItems"
+        (changed)="onChange($event)"
+      ></mp-dropdown>
+
+      <span class="top-actions-label">
+        by
+      </span>
+
+      <mp-dropdown
+        class="select-clinician"
+        [selectedValue]="selectedSortItem"
+        [options]="sortOptions"
+      ></mp-dropdown>
+    </div> -->
+  </div>
+
+  <div class="top-menu">
+    <div class="border-icon">
+      <i mp-icon [inlineSVG]="'assets/images/icons/search.svg'"></i>
+    </div>
+
+    <div class="border-icon">
+      <i mp-icon [inlineSVG]="'assets/images/icons/add.svg'"></i>
+    </div>
+
+    <div class="menu">
+      <!-- <mp-menu title="AM" icon="more" [items]="menuItems"></mp-menu> -->
+    </div>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+@import '../widget-tabs.less';
+
+mp-profile-clinical-history-widget {
+  .profile-tabs .first-tab {
+    width: 600px !important;
+    margin-bottom: 50px;
+  }
+
+  #commentInput div[mp-input] .ant-input {
+    width: -moz-available !important;
+    border: 1.5px solid #f0f0f1 !important;
+    margin-top: 10px;
+    width: 100% !important;
+  }
+
+  #commentInput{
+    display: block !important;
+  }
+
+  .profile-tabs .tab .tab-form:first-child{
+    display: block !important;
+  }
+
+  @media screen and (max-width: 700px){
+    .profile-tabs .first-tab {
+      width: 343px !important;
+    }
+  }
+}

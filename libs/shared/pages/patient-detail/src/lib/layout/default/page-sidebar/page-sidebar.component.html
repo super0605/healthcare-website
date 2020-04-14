@@ -1,0 +1,53 @@
+<div class="app_side_container">
+  <ul
+    nz-menu
+    nzTheme="light"
+    class="app__side__menu"
+    nzMode="{{ mode }}"
+    [nzInlineCollapsed]="true"
+  >
+    <li
+      nz-menu-item
+      class="app__side__menu__item"
+      [nzSelected]="
+        router.url.toString().indexOf('/patient/detail/chart') === 0
+      "
+    >
+      <a routerLink="/patient/detail/chart/{{ profileId }}">
+        <div mp-icon [inlineSVG]="'assets/images/icons/chart.svg'"></div>
+      </a>
+    </li>
+    <li
+      nz-menu-item
+      class="app__side__menu__item"
+      [nzSelected]="
+        router.url.toString().indexOf('/patient/detail/profile') === 0
+      "
+    >
+      <a routerLink="/patient/detail/profile/{{ profileId }}">
+        <div mp-icon [inlineSVG]="'assets/images/icons/profile.svg'"></div>
+      </a>
+    </li>
+    <li
+      nz-menu-item
+      class="app__side__menu__item"
+      [nzSelected]="
+        router.url.toString().indexOf('/patient/detail/questionnaire') === 0
+      "
+    >
+      <a routerLink="/patient/detail/questionnaire/{{ profileId }}">
+        <div mp-icon [inlineSVG]="'assets/images/icons/review.svg'"></div>
+      </a>
+    </li>
+  </ul>
+
+  <div class="app_menu_settings">
+    <mp-button type="primary" shape="circle" size="large">
+      <i nz-icon nzType="plus"></i>
+    </mp-button>
+
+    <mp-button type="primary" shape="circle" size="large">
+      <i nz-icon nzType="setting"></i>
+    </mp-button>
+  </div>
+</div>

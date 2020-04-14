@@ -1,0 +1,151 @@
+@import 'variables.less';
+
+.profile-tabs {
+  display: flex;
+
+  hr {
+    color: white;
+    opacity: 0.4;
+  }
+  .first-tab {
+    border: 2px solid #f0f0f1;
+    margin-top: 68.35px;
+    height: auto;
+    padding-bottom: 15px;
+  }
+  .second-tab {
+    width: 400px;
+    height: 127px;
+    margin-left: 50px;
+    border: 2px solid #f0f0f1;
+    margin-top: 40px;
+  }
+
+  .third-tab {
+    width: 400px;
+    height: auto;
+    border: 2px solid #f0f0f1;
+    margin-top: 68.35px;
+    margin-left: 40px;
+
+    .line {
+      width: 349px;
+      height: 2px;
+      border: 0;
+      background: #f0f0f1;
+      opacity: 1;
+      margin-top: 2px;
+    }
+    .patient-menu {
+      a {
+        color: rgba(0, 0, 0, 0.65);
+      }
+      svg {
+        margin-left: 18px;
+        color: @primary-color !important;
+        font-size: 20px;
+      }
+    }
+  }
+
+  .tab {
+    .tab-menu {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      mp-menu {
+        padding-right: 16px;
+        margin-bottom: 5px;
+        a{
+          color: @primary-color !important;
+        }
+      }
+
+      .form-label {
+        padding: 15px 25px;
+      }
+
+      .icons-edit-mode {
+        margin-bottom: -9px;
+        margin-right: -2px;
+        cursor: pointer;
+        display: flex;
+
+        button {
+          margin: 0 14px;
+
+          i {
+
+            svg{
+              height: 18px;
+              width: 18px;
+            }
+          }
+
+        }
+      }
+
+      .icon-close svg {
+        height: 35px;
+        width: 35px;
+        color: rgba(0, 0, 0, 0.25);
+      }
+
+      .icon-check svg {
+        height: 35px;
+        width: 35px;
+        margin: 0 8px 0 13px;
+        fill: rgb(50, 123, 246);
+      }
+    }
+
+    .tab-form {
+      padding: 8px 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      div[mp-input] {
+        .ant-input {
+          border: 0;
+          border-bottom: 2px solid #f0f0f1;
+          width: 225px;
+        }
+
+        .ant-input[disabled] {
+          background-color: white !important;
+          color: rgba(0, 0, 0, 0.65) !important;
+          cursor: auto !important;
+        }
+      }
+
+      .form-label {
+        font-size: 14px;
+        color: rgba(0, 0, 0, 0.85);
+      }
+
+      .form-label-surgery {
+        font-size: 16px;
+        color: rgba(0, 0, 0, 0.65);
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 700px){
+  .profile-tabs .first-tab {
+    margin-left: 50px;
+    width: 400px;
+  }
+}
+@media screen and (max-width: 700px){
+  .profile-tabs .first-tab {
+    width: 343px;
+    font-size: 12px !important;
+
+    .form-label{
+      font-size: 12px !important;
+    }
+  }
+}

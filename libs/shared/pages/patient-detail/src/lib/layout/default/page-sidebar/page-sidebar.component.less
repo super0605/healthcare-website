@@ -1,0 +1,58 @@
+@import 'variables.less';
+
+.app__side__menu {
+  .app__side__menu__item {
+    height: @menu-item-height;
+    line-height: @menu-item-height;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .app__side__menu__item:nth-child(3n) {
+    a {
+      padding-top: 5px !important;
+    }
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .app_side_container {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .app_menu_settings {
+      display: inline-block !important;
+      margin-left: 19px;
+      margin-bottom: -15px;
+      button {
+        margin-bottom: 15px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 901px) {
+  .app_side_container {
+    display: flex !important;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+
+    .app_menu_settings {
+      margin-right: 4px;
+
+      button:first-child {
+        margin-right: 10px;
+      }
+    }
+
+  }
+}
+
+@media screen and (max-width: 600px) {
+}
+
+.ant-layout-sider-children, medopad-page-sidebar {
+  display: flex !important;
+}

@@ -1,0 +1,20 @@
+<div class="page-content">
+  <div class="profile">
+    <div class="tabs-flex-container" *ngIf="patient">
+      <div>
+        <mp-profile-general-widget
+          [data]="generalData"
+        ></mp-profile-general-widget>
+        <mp-profile-surgery-widget
+          [data]="patientSurgeryData"
+        ></mp-profile-surgery-widget>
+      </div>
+      <mp-profile-assigned-clinicians-widget
+        [data]="clinicians"
+      ></mp-profile-assigned-clinicians-widget>
+      <mp-profile-clinical-history-widget
+        [data]="clinicianHistory"
+      ></mp-profile-clinical-history-widget>
+    </div>
+  </div>
+</div>

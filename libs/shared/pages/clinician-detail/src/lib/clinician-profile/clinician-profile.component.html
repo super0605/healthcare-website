@@ -1,0 +1,69 @@
+<div class="clinician-detail-container">
+  <div class="clinician-profile-section">
+    <div class="profile-block">
+      <p class="clinician-name">{{ clinicianProfile.name }}</p>
+      <p class="clinician-id">ID: {{ clinicianProfile.id }}</p>
+      <p class="clinician-body">
+        <span>Email: {{ clinicianProfile.email }}</span>
+        <span>Mobile Number: {{ clinicianProfile.mobile }}</span>
+        <span>Address: {{ clinicianProfile.address }}</span>
+      </p>
+    </div>
+
+    <div class="action-menu">
+      <mp-menu
+        title=""
+        icon="ellipsis"
+        [items]="menuItems"
+        (clicked)="onChangeAction($event)"
+      ></mp-menu>
+    </div>
+  </div>
+
+  <div class="patients-section">
+    <mp-table
+      class="mp-clinicians-list"
+      [listOfData]="patientList"
+      [gridOptions]="gridOptions"
+      [itemTpl]="itemTpl"
+    >
+      <ng-template let-item #itemTpl>
+        <ng-container [ngSwitch]="item.col.name">
+          <ng-container *ngSwitchCase="'familyName'">
+            {{ item.data.familyName }} {{ item.data.givenName }}
+          </ng-container>
+          <ng-container *ngSwitchCase="'dob'">
+            {{
+              !item.data.dob
+                ? '00/00/0000'
+                : (item.data.dob | date: 'dd/MM/yyyy')
+            }}
+          </ng-container>
+          <ng-container *ngSwitchCase="'lastActivityDateTime'">
+            #{{
+              !item.data.lastActivityDateTime
+                ? '00/00/0000'
+                : (item.data.lastActivityDateTime | date: 'dd/MM/yyyy')
+            }}
+          </ng-container>
+          <ng-container *ngSwitchCase="'updatedDateTime'">
+            {{
+              !item.data.updatedDateTime
+                ? '00/00/0000'
+                : (item.data.updatedDateTime | date: 'dd/MM/yyyy')
+            }}
+          </ng-container>
+          <ng-container *ngSwitchCase="'button'">
+            <mp-menu
+              title=""
+              icon="ellipsis"
+              [items]="[{ label: 'Remove' }]"
+              [style]="'top: -15px; right: -5px'"
+              (clicked)="onDeletePatientAction(item.data.givenName)"
+            ></mp-menu>
+          </ng-container>
+        </ng-container>
+      </ng-template>
+    </mp-table>
+  </div>
+</div>

@@ -1,0 +1,55 @@
+<div class="h-100 reset-password-container" align="top">
+  <h4 mp-typography class="title">
+    Reset your password
+  </h4>
+
+  <div class="topbar-back">
+    <a mp-typography href="/login">
+      <i mp-icon mpType="left"></i>
+      Back to login
+    </a>
+  </div>
+
+  <ng-container [ngSwitch]="activeStep">
+    <ng-container *ngSwitchCase="'email-confirm-step'">
+      <form
+        mp-form
+        class="reset-password-form"
+        [formGroup]="validateForm"
+        (ngSubmit)="submitForm()"
+      >
+        <mp-form-item>
+          <mp-form-control
+            [mpErrorTip]="locales['authentication.email.placeholder']"
+          >
+            <mp-input-group size="large">
+              <input
+                mp-input
+                type="email"
+                formControlName="email"
+                [placeholder]="locales['authentication.email.template']"
+              />
+            </mp-input-group>
+          </mp-form-control>
+        </mp-form-item>
+
+        <p mp-typography class="description">
+          {{ locales['authentication.resetPassword.description'] }}
+        </p>
+
+        <mp-form-item>
+          <button mp-button type="primary" class="next-button">Next</button>
+        </mp-form-item>
+      </form>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="'email-sent-step'">
+      <div class="reset-password-text-block">
+        <p mp-typography class="description">
+          We will send you an email with a link for account verification. Please
+          have an access to your mailbox before proceeding.
+        </p>
+      </div>
+    </ng-container>
+  </ng-container>
+</div>

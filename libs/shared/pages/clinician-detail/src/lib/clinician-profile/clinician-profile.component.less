@@ -1,0 +1,53 @@
+:host ::ng-deep .clinician-detail-container {
+  height: 90.5vh;
+  background-color: white;
+
+  .clinician-profile-section {
+    padding: 40px;
+    position: relative;
+
+    .profile-block {
+      .clinician-name {
+        font-size: 24px;
+        line-height: 1.333;
+        color: rgba(0, 0, 0, 0.85);
+        margin: 0;
+      }
+      .clinician-id {
+        font-size: 14px;
+        line-height: 1.571;
+        color: rgba(0, 0, 0, 0.85);
+        margin: 0;
+      }
+      .clinician-body {
+        font-size: 14px;
+        line-height: 1.571;
+        color: rgba(0, 0, 0, 0.45);
+
+        span {
+          display: block;
+        }
+      }
+    }
+
+    .action-menu {
+      position: absolute;
+      top: 21px;
+      right: 15.5px;
+      padding: 5px 16px;
+
+      i {
+        font-size: 21px;
+      }
+    }
+  }
+}
+
+:host ::ng-deep .remove-row-button.ant-dropdown-menu {
+  top: -15px;
+  right: -5px;
+}
+
+:host body{
+  color: red;
+}

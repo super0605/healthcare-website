@@ -1,0 +1,12 @@
+<a nz-dropdown nzTrigger="click" [nzDropdownMenu]="menu">
+  {{ title }}
+  <i nz-icon [nzType]="icon" nzTheme="outline"></i>
+</a>
+
+<nz-dropdown-menu #menu="nzDropdownMenu">
+  <ul nz-menu [style]="style">
+    <li nz-menu-item *ngFor="let item of items" (click)="onChange($event)">
+      {{ item.label }}
+    </li>
+  </ul>
+</nz-dropdown-menu>

@@ -1,0 +1,53 @@
+<mp-profile-base-widget
+  title="General"
+  (editStateChanged)="isEditState = $event"
+  (submitEditForm)="submit()"
+>
+  <div class="tab-form">
+    <div class="form-label">Gender:</div>
+    <mp-menu
+      title="{{ data.gender }}"
+      [items]="gender"
+      class="patient-menu"
+      icon="caret-down"
+      (selected)="data.gender = $event"
+      [disabled]="!isEditState"
+    ></mp-menu>
+  </div>
+
+  <div class="tab-form">
+    <div class="form-label">Date of birth:</div>
+    <div
+      mp-input
+      type="text"
+      [value]="data.birth | date: 'dd/MM/yyyy'"
+      (changed)="onChangeParams($event, 'birth')"
+      [disabled]="!isEditState"
+      placeholder="Add birth"
+    ></div>
+  </div>
+
+  <div class="tab-form">
+    <div class="form-label">Mobile No.:</div>
+    <div
+      mp-input
+      type="text"
+      [value]="data.mobile"
+      (changed)="onChangeParams($event, 'mobile')"
+      [disabled]="!isEditState"
+      placeholder="Add mobile"
+    ></div>
+  </div>
+
+  <div class="tab-form">
+    <div class="form-label">Address:</div>
+    <div
+      mp-input
+      type="text"
+      [value]="data.address"
+      (changed)="onChangeParams($event, 'address')"
+      [disabled]="!isEditState"
+      placeholder="Add address"
+    ></div>
+  </div>
+</mp-profile-base-widget>

@@ -1,0 +1,27 @@
+<nz-select
+  nzShowSearch
+  class="{{ class }}"
+  nzPlaceHolder="{{ placeholder }}"
+  [(ngModel)]="selectedValue"
+  (ngModelChange)="onChange($event)"
+  [nzShowSearch]="true"
+  [disabled]="disabled"
+  [compareWith]="compareFn"
+>
+  <nz-option
+    nzValue="{{ selectedValue }}"
+    nzDisabled
+    nzCustomContent
+    class="disabled-item"
+  >
+    {{ selectedValue.label }}
+    <i nz-icon nzType="caret-down" nzTheme="outline"></i>
+  </nz-option>
+
+  <nz-option
+    *ngFor="let item of options"
+    nzLabel="{{ item.label }}"
+    [nzValue]="item"
+  >
+  </nz-option>
+</nz-select>

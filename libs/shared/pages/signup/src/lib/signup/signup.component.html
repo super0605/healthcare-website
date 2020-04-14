@@ -1,0 +1,117 @@
+<div class="h-100 register-container" align="top">
+  <h4 mp-typography class="sub-title">
+    {{ locales['authentication.register.title'] }}
+  </h4>
+
+  <div class="topbar-back">
+    <a mp-typography href="/login">
+      <i mp-icon mpType="left"></i>
+      {{ locales['authentication.backLogin'] }}
+    </a>
+  </div>
+
+  <form
+    mp-form
+    class="register-form"
+    [formGroup]="validateForm"
+    (ngSubmit)="submitForm()"
+  >
+    <mp-form-item>
+      <mp-form-control
+        [mpErrorTip]="locales['authentication.firstName.placeholder']"
+      >
+        <mp-input-group size="large">
+          <input
+            mp-input
+            type="text"
+            formControlName="firstName"
+            [placeholder]="locales['authentication.firstName.placeholder']"
+          />
+        </mp-input-group>
+      </mp-form-control>
+    </mp-form-item>
+    <mp-form-item>
+      <mp-form-control
+        [mpErrorTip]="locales['authentication.surName.placeholder']"
+      >
+        <mp-input-group size="large">
+          <input
+            mp-input
+            type="text"
+            formControlName="surName"
+            [placeholder]="locales['authentication.surName.placeholder']"
+          />
+        </mp-input-group>
+      </mp-form-control>
+    </mp-form-item>
+    <mp-form-item>
+      <mp-form-control
+        [mpErrorTip]="locales['authentication.email.placeholder']"
+      >
+        <mp-input-group size="large">
+          <input
+            mp-input
+            type="email"
+            formControlName="email"
+            [placeholder]="locales['authentication.email.template']"
+          />
+        </mp-input-group>
+      </mp-form-control>
+    </mp-form-item>
+    <mp-form-item>
+      <mp-form-control
+        [mpErrorTip]="locales['authentication.password.placeholder']"
+      >
+        <mp-input-group size="large">
+          <input
+            mp-input
+            type="password"
+            formControlName="password"
+            [placeholder]="locales['authentication.password.placeholder']"
+          />
+        </mp-input-group>
+      </mp-form-control>
+    </mp-form-item>
+    <mp-form-item>
+      <mp-form-control
+        [mpErrorTip]="locales['authentication.confirmPassword.placeholder']"
+      >
+        <mp-input-group size="large">
+          <input
+            mp-input
+            type="password"
+            formControlName="confirmPassword"
+            [placeholder]="
+              locales['authentication.confirmPassword.placeholder']
+            "
+          />
+        </mp-input-group>
+      </mp-form-control>
+    </mp-form-item>
+    <mp-form-item>
+      <mp-form-control
+        [mpErrorTip]="locales['authentication.code.placeholder']"
+      >
+        <mp-input-group size="large">
+          <input
+            mp-input
+            type="text"
+            [placeholder]="locales['authentication.code.tempate']"
+            formControlName="code"
+          />
+        </mp-input-group>
+      </mp-form-control>
+    </mp-form-item>
+    <mp-form-item class="allow-block">
+      <label mp-checkbox>
+        {{ locales['authentication.signup.agreement'] }}
+      </label>
+    </mp-form-item>
+
+    <mp-form-item>
+      <button mp-button type="primary" class="login-button">
+        {{ locales['authentication.register'] }}
+      </button>
+    </mp-form-item>
+  </form>
+</div>

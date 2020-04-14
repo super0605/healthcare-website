@@ -1,0 +1,19 @@
+<mp-profile-base-widget
+  title="Assigned Clinicians"
+  [menuItems]="menuItems"
+  (submitAction)="onSubmitAction($event)"
+>
+  <div class="clinicians" *ngFor="let item of data">
+    <div class="tab-form">
+      <div class="form-label">{{ item.name }}</div>
+      <mp-menu
+        title="{{ item.role }}"
+        [items]="patientCliniciansStatus"
+        class="patient-menu"
+        icon="caret-down"
+        (selected)="item.role = $event"
+      ></mp-menu>
+    </div>
+    <hr class="line" />
+  </div>
+</mp-profile-base-widget>

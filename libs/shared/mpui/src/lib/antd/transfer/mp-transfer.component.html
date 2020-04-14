@@ -1,0 +1,68 @@
+<mp-transfer-list
+  class="ant-transfer-list"
+  [ngStyle]="mpListStyle"
+  data-direction="left"
+  [titleText]="mpTitles[0]"
+  [showSelectAll]="mpShowSelectAll"
+  [dataSource]="leftDataSource"
+  [filter]="leftFilter"
+  [filterOption]="mpFilterOption"
+  (filterChange)="handleFilterChange($event)"
+  [renderList]="mpRenderList[0]"
+  [render]="mpRender"
+  [disabled]="mpDisabled"
+  [showSearch]="mpShowSearch"
+  [searchPlaceholder]="mpSearchPlaceholder || locale.searchPlaceholder"
+  [notFoundContent]="mpNotFoundContent"
+  [itemUnit]="mpItemUnit || locale.itemUnit"
+  [itemsUnit]="mpItemsUnit || locale.itemsUnit"
+  [footer]="mpFooter"
+  (handleSelect)="handleLeftSelect($event)"
+  (handleSelectAll)="handleLeftSelectAll($event)"
+>
+</mp-transfer-list>
+<div class="ant-transfer-operation">
+  <button
+    mp-button
+    (click)="moveToLeft()"
+    [disabled]="mpDisabled || !leftActive"
+    [mpType]="'primary'"
+    [mpSize]="'small'"
+  >
+    <i mp-icon mpType="left"></i
+    ><span *ngIf="mpOperations[1]">{{ mpOperations[1] }}</span>
+  </button>
+  <button
+    mp-button
+    (click)="moveToRight()"
+    [disabled]="mpDisabled || !rightActive"
+    [mpType]="'primary'"
+    [mpSize]="'small'"
+  >
+    <i mp-icon mpType="right"></i
+    ><span *ngIf="mpOperations[0]">{{ mpOperations[0] }}</span>
+  </button>
+</div>
+<mp-transfer-list
+  class="ant-transfer-list"
+  [ngStyle]="mpListStyle"
+  data-direction="right"
+  [titleText]="mpTitles[1]"
+  [showSelectAll]="mpShowSelectAll"
+  [dataSource]="rightDataSource"
+  [filter]="rightFilter"
+  [filterOption]="mpFilterOption"
+  (filterChange)="handleFilterChange($event)"
+  [renderList]="mpRenderList[1]"
+  [render]="mpRender"
+  [disabled]="mpDisabled"
+  [showSearch]="mpShowSearch"
+  [searchPlaceholder]="mpSearchPlaceholder || locale.searchPlaceholder"
+  [notFoundContent]="mpNotFoundContent"
+  [itemUnit]="mpItemUnit || locale.itemUnit"
+  [itemsUnit]="mpItemsUnit || locale.itemsUnit"
+  [footer]="mpFooter"
+  (handleSelect)="handleRightSelect($event)"
+  (handleSelectAll)="handleRightSelectAll($event)"
+>
+</mp-transfer-list>

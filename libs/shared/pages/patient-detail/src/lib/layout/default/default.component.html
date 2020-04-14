@@ -1,0 +1,16 @@
+<mp-layout class="app__default__layout">
+  <ng-container *ngIf="screenMode === 'mobile'">
+    <medopad-page-sidebar mode="horizontal"></medopad-page-sidebar>
+  </ng-container>
+
+  <ng-container *ngIf="screenMode === 'desktop'">
+    <nz-sider className="app__sidebar" [nzCollapsed]="true" [nzWidth]="'auto'">
+      <medopad-page-sidebar mode="inline"></medopad-page-sidebar>
+    </nz-sider>
+  </ng-container>
+
+  <mp-content>
+    <medopad-page-header></medopad-page-header>
+    <router-outlet></router-outlet>
+  </mp-content>
+</mp-layout>

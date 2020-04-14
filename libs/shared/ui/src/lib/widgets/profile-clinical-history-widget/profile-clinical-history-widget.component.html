@@ -1,0 +1,53 @@
+<mp-profile-base-widget
+  title="Clinical History"
+  (editStateChanged)="isEditState = $event"
+  (submitEditForm)="submit()"
+>
+  <div class="tab-form" id="commentInput">
+    <div class="form-label">Reason for monitoring:</div>
+    <div
+      mp-input
+      type="text"
+      [value]="data.comments"
+      (changed)="onChangeParams($event, 'comment')"
+      [disabled]="!isEditState"
+      placeholder="Add comments..."
+    ></div>
+  </div>
+
+  <div class="tab-form">
+    <div class="form-label">Patient Enrolment date::</div>
+    <div
+      mp-input
+      type="text"
+      [value]="data.date"
+      (changed)="onChangeParams($event, 'date')"
+      [disabled]="!isEditState"
+      placeholder="Add date"
+    ></div>
+  </div>
+
+  <div class="tab-form">
+    <div class="form-label">Patient health proxies:</div>
+    <div
+      mp-input
+      type="text"
+      [value]="data.contact"
+      (changed)="onChangeParams($event, 'contact')"
+      [disabled]="!isEditState"
+      placeholder="Add contact"
+    ></div>
+  </div>
+
+  <div class="tab-form">
+    <div class="form-label">Specialists assigned to patient:</div>
+    <div
+      mp-input
+      type="text"
+      [value]="data.specialist"
+      (changed)="onChangeParams($event, 'specialist')"
+      [disabled]="!isEditState"
+      placeholder="Add specialist"
+    ></div>
+  </div>
+</mp-profile-base-widget>

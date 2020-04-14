@@ -1,0 +1,36 @@
+<!-- <mp-table class="mp-clinicians-list" [listOfData]="listOfData" [gridOptions]="gridOptions" [itemTpl]="itemTpl">
+  <ng-template let-item #itemTpl>
+    <div (click)="patientProfile(item)" [ngSwitch]="item.col.name" class="row">
+      <ng-container *ngSwitchCase="'familyName'">
+        {{ item.data.familyName }} {{ item.data.givenName }}
+      </ng-container>
+      <ng-container *ngSwitchCase="'dob'">
+        {{
+          !item.data.dob ? '00/00/0000' : (item.data.dob | date: 'dd/MM/yyyy')
+        }}
+      </ng-container>
+      <ng-container *ngSwitchCase="'lastActivityDateTime'">
+        #{{
+          !item.data.lastActivityDateTime
+            ? '00/00/0000'
+            : (item.data.lastActivityDateTime | date: 'dd/MM/yyyy')
+        }}
+      </ng-container>
+      <ng-container *ngSwitchCase="'updatedDateTime'">
+        {{
+          !item.data.updatedDateTime
+            ? '00/00/0000'
+            : (item.data.updatedDateTime | date: 'dd/MM/yyyy')
+        }}
+      </ng-container>
+      <ng-container *ngSwitchCase="'keyVitals'">
+        <mp-key-vitals-renderer [data]="item.data"></mp-key-vitals-renderer>
+      </ng-container>
+      <ng-container *ngSwitchCase="'button'">
+        <mp-button class="ant-btn-new"
+          >New Data</mp-button
+        >
+      </ng-container>
+    </div>
+  </ng-template>
+</mp-table> -->

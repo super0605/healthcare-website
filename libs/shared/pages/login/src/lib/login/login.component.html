@@ -1,0 +1,98 @@
+<div mp-row justify="center" class="h-100" align="top">
+  <div class="login-container">
+    <h3 mp-title class="title">
+      {{ locales['authentication.title'] }}
+    </h3>
+    <h4 mp-title class="sub-title" tag="h4">
+      {{ locales['authentication.login.title'] }}
+    </h4>
+
+    <ng-container [ngSwitch]="activeStep">
+      <ng-container *ngSwitchCase="'first-step'">
+        <form
+          mp-form
+          class="login-form"
+          [formGroup]="validateForm"
+          (ngSubmit)="gotoNextStep()"
+        >
+          <mp-form-item>
+            <mp-form-control mpErrorTip="Please input your email!">
+              <mp-input-group size="large">
+                <input
+                  mp-input
+                  type="email"
+                  formControlName="email"
+                  [placeholder]="locales['authentication.email.placeholder']"
+                />
+              </mp-input-group>
+            </mp-form-control>
+          </mp-form-item>
+
+          <div class="register-link">
+            <a href="/register">
+              {{ locales['authentication.account.create'] }}
+            </a>
+          </div>
+
+          <mp-form-item flex="flex">
+            <button mp-button mpType="primary" class="login-button">
+              {{ locales['authentication.next'] }}
+            </button>
+          </mp-form-item>
+        </form>
+      </ng-container>
+
+      <ng-container *ngSwitchCase="'second-step'">
+        <form
+          mp-form
+          class="login-form login-step2"
+          [formGroup]="validateForm"
+          (ngSubmit)="submitForm()"
+        >
+          <mp-form-item>
+            <mp-form-control mpErrorTip="Please input your email!">
+              <mp-input-group size="large">
+                <input
+                  mp-input
+                  type="email"
+                  formControlName="email"
+                  [placeholder]="locales['authentication.email.placeholder']"
+                />
+              </mp-input-group>
+            </mp-form-control>
+          </mp-form-item>
+          <mp-form-item>
+            <mp-form-control mpErrorTip="Please input your password!">
+              <mp-input-group size="large">
+                <input
+                  mp-input
+                  type="password"
+                  formControlName="password"
+                  [placeholder]="locales['authentication.password.placeholder']"
+                />
+              </mp-input-group>
+            </mp-form-control>
+          </mp-form-item>
+
+          <div class="forgotton-password-link">
+            <a href="/email-confirm">
+              {{ locales['authentication.forget.password'] }}
+            </a>
+          </div>
+
+          <div class="register-link">
+            <a href="/register">
+              {{ locales['authentication.account.create'] }}
+            </a>
+          </div>
+
+          <mp-form-item flex="flex">
+            <button mp-button mpType="primary" class="login-button">
+              {{ locales['authentication.singin'] }}
+            </button>
+          </mp-form-item>
+        </form>
+      </ng-container>
+    </ng-container>
+  </div>
+</div>

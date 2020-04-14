@@ -1,0 +1,138 @@
+@import 'variables.less';
+
+.topbar {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  border-bottom: 1px solid @border-color-base;
+  justify-content: space-between;
+
+  .flex-container {
+    display: flex;
+    flex-wrap: nowrap;
+    height: 100%;
+  }
+
+  .top-menu {
+    display: flex;
+    margin-right: 1%;
+    height: inherit;
+    align-items: center;
+
+    .ant-menu-inline .ant-menu-item,
+    .ant-menu-inline .ant-menu-submenu-title {
+      height: auto;
+      line-height: 24px;
+    }
+
+    .border-icon {
+      border: 1px solid @primary-color;
+      border-radius: 50%;
+      margin: 5px;
+      cursor: pointer;
+      height: max-content;
+
+      svg {
+        fill: @primary-color !important;
+        width: 28px;
+        height: 25px;
+        margin: 4px;
+        padding-top: 4px;
+      }
+    }
+
+    .menu {
+      margin-top: -3px;
+      padding-left: 3px;
+
+      .ant-menu-inline {
+        border-right: 0 solid;
+      }
+
+      .ant-menu-item-selected {
+        border-radius: 30px;
+      }
+
+      ul {
+        border-radius: 30px;
+        width: auto !important;
+        color: @primary-color;
+      }
+
+      a {
+        border: 1px solid @border-color-base;
+        border-radius: 30px;
+        padding: 10px 5px 8px 12px;
+      }
+
+      i {
+        margin-left: 14px;
+        padding-top: 2px;
+        color: @primary-color !important;
+      }
+
+      svg {
+        font-size: 18px;
+      }
+    }
+  }
+
+  .logo {
+    display: block;
+    height: @layout-header-height;
+    width: @menu-collapsed-width;
+    text-align: center;
+    border-bottom: 1px solid @border-color-base;
+    border-right: 1px solid @border-color-base;
+    display: flex;
+    align-items: center;
+
+    .logo-img-container {
+      height: 30px;
+      display: inline-flex;
+    }
+  }
+
+  .topbar-back {
+    margin-left: 20px;
+    margin-top: 27px;
+  }
+
+  .top-actions {
+    display: flex;
+    align-items: center;
+
+    span.top-actions-label {
+      padding: 0 @padding-sm;
+    }
+
+    .ant-select {
+      min-width: 150px;
+
+      .ant-select-selection {
+        background: @component-background;
+        color: @primary-color;
+        border-radius: 20px;
+        height: @input-height-lg;
+
+        .ant-select-selection__rendered {
+          line-height: @input-height-lg;
+        }
+
+        .ant-select-arrow {
+          color: @primary-color;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 900px){
+  .topbar{
+    font-size: 10px !important;
+  }
+}
+.ant-layout-header {
+  line-height: normal;
+}

@@ -1,0 +1,88 @@
+{
+  "npmScope": "medopad",
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    "tsconfig.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*"
+  },
+  "projects": {
+    "clinician-app": {
+      "tags": []
+    },
+    "clinician-app-e2e": {
+      "tags": [],
+      "implicitDependencies": ["clinician-app"]
+    },
+    "shared-ui": {
+      "tags": []
+    },
+    "shared-theme": {
+      "tags": []
+    },
+    "shared-layouts": {
+      "tags": []
+    },
+    "shared-providers": {
+      "tags": []
+    },
+    "clinician-app-providers": {
+      "tags": []
+    },
+    "shared-locales": {
+      "tags": []
+    },
+    "clinician-app-locales": {
+      "tags": []
+    },
+    "shared-services": {
+      "tags": []
+    },
+    "clinician-app-services": {
+      "tags": []
+    },
+    "shared-routes": {
+      "tags": []
+    },
+    "clinician-app-routes": {
+      "tags": []
+    },
+    "shared-clinicians-list": {
+      "tags": []
+    },
+    "shared-patients-list": {
+      "tags": []
+    },
+    "shared-patients-profile": {
+      "tags": []
+    },
+    "shared-pages-signup": {
+      "tags": []
+    },
+    "shared-pages-login": {
+      "tags": []
+    },
+    "shared-pages-dashboard": {
+      "tags": []
+    },
+    "shared-pages-reset-password": {
+      "tags": []
+    },
+    "shared-pages-email-confirm": {
+      "tags": []
+    },
+    "shared-patient-detail": {
+      "tags": []
+    },
+    "shared-pages-clinician-detail": {
+      "tags": []
+    },
+    "shared-mpui": {
+      "tags": []
+    }
+  }
+}
